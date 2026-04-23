@@ -340,19 +340,23 @@
 
             <!-- Formulario -->
             <div class="col-lg-6 reveal">
-                <form class="contact-form" onsubmit="sendContact(event)">
+                <form class="contact-form" name="presupuesto" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="sendContact(event)">
+                    <input type="hidden" name="form-name" value="presupuesto">
+                    <p class="d-none">
+                        <input name="bot-field">
+                    </p>
                     <div class="row g-3">
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" placeholder="Nombre" required>
+                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
                         </div>
                         <div class="col-sm-6">
-                            <input type="tel" class="form-control" placeholder="Teléfono">
+                            <input type="tel" name="telefono" class="form-control" placeholder="Teléfono">
                         </div>
                         <div class="col-12">
-                            <input type="email" class="form-control" placeholder="Email" required>
+                            <input type="email" name="email" class="form-control" placeholder="Email" required>
                         </div>
                         <div class="col-12">
-                            <select class="form-select">
+                            <select name="tipo-reforma" class="form-select">
                                 <option value="" selected disabled>Tipo de reforma</option>
                                 <option>Reforma integral de vivienda</option>
                                 <option>Reforma de cocina</option>
@@ -363,7 +367,7 @@
                             </select>
                         </div>
                         <div class="col-12">
-                            <textarea class="form-control" rows="4" placeholder="Cuéntanos qué necesitas..." required></textarea>
+                            <textarea name="mensaje" class="form-control" rows="4" placeholder="Cuéntanos qué necesitas..." required></textarea>
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary-dino w-100 btn-lg">

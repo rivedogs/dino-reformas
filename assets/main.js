@@ -31,29 +31,39 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-/* Formulario de contacto — simulación */
+/* Formulario de contacto — Netlify Forms */
 function sendContact(event) {
     event.preventDefault();
-    const btn = event.target.querySelector('button[type="submit"]');
+    const form = event.target;
+    const btn  = form.querySelector('button[type="submit"]');
     const original = btn.innerHTML;
 
     btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Enviando...';
     btn.disabled = true;
 
-    setTimeout(() => {
+    fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString(),
+    })
+    .then(() => {
         btn.innerHTML = '<i class="fa-solid fa-check me-2"></i>¡Solicitud enviada!';
         btn.style.background = '#16a34a';
         btn.style.borderColor = '#16a34a';
         showToast('<i class="fa-solid fa-check-circle me-2" style="color:#4ade80"></i>Gracias. Te contactaremos en menos de 24h.');
-
+        form.reset();
         setTimeout(() => {
             btn.innerHTML = original;
             btn.style.background = '';
             btn.style.borderColor = '';
             btn.disabled = false;
-            event.target.reset();
-        }, 3000);
-    }, 1400);
+        }, 4000);
+    })
+    .catch(() => {
+        btn.innerHTML = original;
+        btn.disabled = false;
+        showToast('<i class="fa-solid fa-triangle-exclamation me-2" style="color:#f59e0b"></i>Error al enviar. Llámanos directamente.');
+    });
 }
 
 /* Toast */
