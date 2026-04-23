@@ -132,7 +132,7 @@ h1, h2, h3, h4 {
    NAVBAR
 ============================================================ */
 #mainNav {
-    background: transparent;
+    background: rgba(9, 26, 51, .75);
     padding: 1.2rem 0;
     transition: background .4s ease, padding .4s ease, box-shadow .4s ease;
 }
@@ -173,26 +173,27 @@ h1, h2, h3, h4 {
 
 /* ============================================================
    HERO
-============================================================ -->
+============================================================ */
 .hero-section {
     position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
+    background-color: #091a33;
     background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?fit=crop&w=1920&q=80');
     background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-position: center top;
+    background-attachment: scroll;
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
-        100deg,
-        rgba(9, 26, 51, .88) 0%,
-        rgba(15, 36, 68, .75) 55%,
-        rgba(9, 26, 51, .5) 100%
+        130deg,
+        rgba(9, 26, 51, .95) 0%,
+        rgba(15, 36, 68, .82) 45%,
+        rgba(26, 86, 219, .25) 100%
     );
 }
 
